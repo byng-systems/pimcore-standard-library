@@ -1,0 +1,24 @@
+{
+    "name": "asimlqt/byng-pimcore-lib",
+    "type": "library",
+    "description": "Byng Pimcore Library",
+    "keywords": ["byng", "pimcore"],
+    "homepage": "https://github.com/asimlqt/byng-pimcore-lib",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Asim Liaquat",
+            "email": "asim@byng.co",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.4.2"
+    },
+    "autoload": {
+        "psr-4": {"Byng\\": "src/Byng"}
+    }
+}
