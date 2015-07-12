@@ -2,6 +2,16 @@
 
 namespace Byng\Resolver;
 
+/**
+ * InheritablePropertyDocumentResolver
+ *
+ * Retrieves the document in which a document property is defined. It traverses up
+ * the tree recursively.
+ *
+ * @package    Byng
+ * @subpackage Resolver
+ * @author     Asim Liaquat <asim@byng.co>
+ */
 class InheritablePropertyDocumentResolver
 {
     /**
