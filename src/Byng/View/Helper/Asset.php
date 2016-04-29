@@ -3,7 +3,7 @@
 namespace Byng\Pimcore\View\Helper;
 
 use Logger;
-use Byng\Memoizer;
+use Byng\Pimcore\Memoizer;
 use Zend_View_Helper_Abstract as AbstractViewHelper;
 
 /**
