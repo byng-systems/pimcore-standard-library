@@ -1,9 +1,9 @@
 {
-    "name": "asimlqt/byng-pimcore-lib",
+    "name": "byng-systems/pimcore-standard-library",
     "type": "library",
     "description": "Byng Pimcore Library",
     "keywords": ["byng", "pimcore"],
-    "homepage": "https://github.com/asimlqt/byng-pimcore-lib",
+    "homepage": "https://github.com/byng-systems/pimcore-standard-library",
     "license": "Apache-2.0",
     "authors": [
         {
