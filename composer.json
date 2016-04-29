@@ -19,6 +19,6 @@
         "phpunit/phpunit": "4.4.2"
     },
     "autoload": {
-        "psr-4": {"Byng\\": "src/Byng"}
+        "psr-4": {"Byng\\Pimcore\\": "src/Byng"}
     }
 }
