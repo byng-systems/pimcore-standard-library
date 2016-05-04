@@ -1,5 +1,5 @@
 {
-    "name": "byng-systems/pimcore-standard-library",
+    "name": "byng/pimcore-standard-library",
     "type": "library",
     "description": "Byng Pimcore Library",
     "keywords": ["byng", "pimcore"],
