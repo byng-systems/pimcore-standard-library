@@ -6,7 +6,9 @@ use Pimcore\Tool;
 use Pimcore\Model\Translation\Website as SiteTranslation;
 
 /**
- * Description of SharedTranslation
+ * WebsiteTranslation Class
+ * 
+ * A helper class to simplify managing shared translations programatically.
  *
  * @author Asim Liaquat <asim@byng.co>
  */

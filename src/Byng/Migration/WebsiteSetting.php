@@ -5,7 +5,9 @@ namespace Byng\Pimcore\Migration;
 use Pimcore\Model\WebsiteSetting as Setting;
 
 /**
- * Description of WebsiteSetting
+ * WebsiteSetting Class
+ * 
+ * A helper class to simplify creating, updating and deleting website settings.
  *
  * @author Asim Liaquat <asim@byng.co>
  */
