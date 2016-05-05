@@ -2,7 +2,6 @@
 
 namespace Byng\Pimcore\Migration;
 
-use Pimcore\Model\Translation;
 use Pimcore\Tool;
 use Pimcore\Model\Translation\Website as SiteTranslation;
 
@@ -31,7 +30,7 @@ class WebsiteTranslation
      */
     public function create(array $translations = [])
     {
-        Translation\Website::clearDependentCache();
+        SiteTranslation::clearDependentCache();
 
         foreach ($translations as $key => $translations) {
             try {
@@ -63,7 +62,7 @@ class WebsiteTranslation
      */
     public function update(array $translations = [])
     {
-        Translation\Website::clearDependentCache();
+        SiteTranslation::clearDependentCache();
 
         foreach ($translations as $key => $translations) {
             try {
