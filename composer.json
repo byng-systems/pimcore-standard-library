@@ -10,6 +10,16 @@
             "name": "Asim Liaquat",
             "email": "asim@byng.co",
             "role": "Developer"
+        },
+        {
+            "name": "Elliot Wright",
+            "email": "elliot@byng.co",
+            "role": "Developer"
+        },
+        {
+            "name": "Callum Jones",
+            "email": "callum@byng.co",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -19,6 +29,6 @@
         "phpunit/phpunit": "4.4.2"
     },
     "autoload": {
-        "psr-4": {"Byng\\Pimcore\\": "src/Byng"}
+        "psr-4": {"Byng\\Pimcore\\": "src/"}
     }
 }
