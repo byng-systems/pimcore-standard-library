@@ -1,63 +1,58 @@
 <?php
 
+/**
+ * This file is part of the pimcore-standard-library package.
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Byng\Resolver;
 
+use Pimcore\Model\Document;
+use Pimcore\Model\Property;
+
 /**
- * InheritablePropertyDocumentResolver
+ * Inheritable Property Document Resolver
  *
- * Retrieves the document in which a document property is defined. It traverses up
- * the tree recursively.
+ * Retrieves the document in which a document property is defined. It traverses up the tree
+ * recursively.
  *
- * @package    Byng
- * @subpackage Resolver
- * @author     Asim Liaquat <asim@byng.co>
+ * @author Asim Liaquat <asim@byng.co>
  */
 class InheritablePropertyDocumentResolver
 {
     /**
+     * Attempt to find an inheritable property by a given name on the current document.
      *
-     * @var \Document_Page
+     * @param Document $document
+     * @param string   $propertyName
+     * @return mixed
      */
-    private $currentDocument;
-    
-    /**
-     * 
-     * @param \Document_Page $currentDocument
-     */
-    public function __construct(\Document_Page $currentDocument)
+    public function find(Document $document, $propertyName)
     {
-        $this->currentDocument = $currentDocument;
-    }
-    
-    /**
-     * 
-     * @param string $propertyName
-     * 
-     * @return \Document_Page|null
-     */
-    public function getPropertyDocument($propertyName)
-    {
-        /* @var $property \Property */
-        $property = $this->currentDocument->getProperty($propertyName, true);
-                
-        if(!$property) {
+        if (!$document) {
             return null;
         }
-        
-        if(!$property->getInherited()) {
-            return $this->currentDocument;
+
+        /** @var Property $property */
+        $property = $document->getProperty($propertyName, true);
+
+        if (!$property) {
+            return null;
         }
-        
-        $document = $this->currentDocument;
-        while(($document = $document->getParent())) {
-            /* @var $property \Property */
-            $property = $document->getProperty($propertyName, true);
-            if(!$property->getInherited()) {
-                return $document;
-            }
+
+        if (!$property->getInherited()) {
+            return $document;
         }
-        
-        return null;
+
+        // See if parent document has the property.
+        return $this->find($document->getParent(), $propertyName);
     }
-    
 }

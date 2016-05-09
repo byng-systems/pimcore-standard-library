@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * This file is part of the pimcore-standard-library package.
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Byng\Pimcore\View\Helper;
 
 use Logger;
@@ -13,14 +26,14 @@ use Zend_View_Helper_Abstract as AbstractViewHelper;
  * cached resources to allow cache busting on CDNs (and may eventually support automatically using
  * CDNs based on website settings).
  *
+ * @author Asim Liaquat <asim@byng.co>
  * @author Elliot Wright <elliot@elliotwright.co>
- * @author Asim Liaquat  <asim@byng.co>
  */
 final class Asset extends AbstractViewHelper
 {
     const ASSET_DIR = "/website/asset";
     const STATIC_DIR = "/website/static";
-    
+
     /**
      * @var Memoizer
      */
@@ -36,7 +49,7 @@ final class Asset extends AbstractViewHelper
     {
         $this->memoizer = $memoizer;
     }
-    
+
     /**
      * Returns the absolute path to an asset
      *
@@ -49,10 +62,17 @@ final class Asset extends AbstractViewHelper
         // @todo CDN support?
         $filename = $this->normaliseFilename($filename);
         $contentsHash = $this->getContentHash($filename);
-        
+
         return $this->getWebPath($filename, $dir) . "?cb=" . $contentsHash;
     }
 
+    /**
+     * Get a hash of the contents of a file. Uses CRC32 for the fastest hashing possible, then
+     * caches the result.
+     *
+     * @param string $filename
+     * @return string
+     */
     private function getContentHash($filename)
     {
         // We don't want to be looking up information about files on disk every request. If we can
