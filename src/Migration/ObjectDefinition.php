@@ -18,11 +18,10 @@ namespace Byng\Pimcore\Migration;
 use Pimcore\Model\Object\ClassDefinition;
 
 /**
- * Class ObjectDefinition
+ * Object Definition
  *
  * Modify ClassDefinitions in Pimcore using JSON exports from Pimcore's admin interface.
  *
- * @package Byng\Pimcore\Migration
  * @author Elliot Wright <elliot@byng.co>
  * @author Callum Jones <callum@byng.co>
  */
@@ -60,6 +59,7 @@ class ObjectDefinition
      * Delete an object given a class name.
      *
      * @param string $className
+     * @return void
      */
     public function delete($className)
     {
