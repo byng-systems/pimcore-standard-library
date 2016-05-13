@@ -15,7 +15,7 @@
 
 namespace Byng\Pimcore;
 
-use Pimcore\Model\Cache;
+use Byng\Pimcore\Cache\CacheInterface;
 
 /**
  * Memoizer
@@ -32,6 +32,18 @@ final class Memoizer
     const LIFETIME_STANDARD = 60;  // 1 minute
     const LIFETIME_LONG = 60 * 60; // 1 hour
 
+    private $cache;
+
+    /**
+     * Memoizer constructor.
+     * 
+     * @param CacheInterface $cache
+     */
+    public function __construct(CacheInterface $cache)
+    {
+        $this->cache = $cache;
+    } 
+    
     /**
      * Wrap given code to provide a clean interface for caching.
      *
@@ -43,12 +55,11 @@ final class Memoizer
     public function memoize($key, \Closure $fn, $expiration = null)
     {
         $key = $this->transformCacheKey($key);
-        if ($cachedData = Cache::load($key)) {
+        if ($cachedData = $this->cache->fetch($key)) {
             $data = $cachedData;
         } else {
             $data = $fn();
-
-            Cache::save($data, $key, [], $expiration);
+            $this->cache->save($key, $data, $expiration);
         }
 
         return $data;
