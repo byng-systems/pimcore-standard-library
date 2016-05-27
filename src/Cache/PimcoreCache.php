@@ -4,15 +4,19 @@ namespace Byng\Pimcore\Cache;
 
 use Pimcore\Model\Cache;
 
+/**
+ * Class PimcoreCache
+ * 
+ * @package Byng\Pimcore\Cache
+ */
 class PimcoreCache implements CacheInterface {
-
-
+    
     /**
      * Fetches an entry from the cache.
      *
-     * @param string $id The id of the cache entry to fetch.
+     * @param $id
      *
-     * @return mixed The cached data or FALSE, if no cache entry exists for the given id.
+     * @return mixed
      */
     public function fetch($id)
     {
@@ -22,9 +26,9 @@ class PimcoreCache implements CacheInterface {
     /**
      * Tests if an entry exists in the cache.
      *
-     * @param string $id The cache id of the entry to check for.
+     * @param $id
      *
-     * @return bool TRUE if a cache entry exists for the given cache id, FALSE otherwise.
+     * @return mixed
      */
     public function contains($id)
     {
@@ -34,15 +38,11 @@ class PimcoreCache implements CacheInterface {
     /**
      * Puts data into the cache.
      *
-     * If a cache entry with the given id already exists, its data will be replaced.
+     * @param $id
+     * @param $data
+     * @param int $lifeTime
      *
-     * @param string $id The cache id.
-     * @param mixed $data The cache entry/data.
-     * @param int $lifeTime The lifetime in number of seconds for this cache entry.
-     *                         If zero (the default), the entry never expires (although it may be deleted from the cache
-     *                         to make place for other entries).
-     *
-     * @return bool TRUE if the entry was successfully stored in the cache, FALSE otherwise.
+     * @return mixed
      */
     public function save($id, $data, $lifeTime = 0)
     {
@@ -52,10 +52,9 @@ class PimcoreCache implements CacheInterface {
     /**
      * Deletes a cache entry.
      *
-     * @param string $id The cache id.
+     * @param $id
      *
-     * @return bool TRUE if the cache entry was successfully deleted, FALSE otherwise.
-     *              Deleting a non-existing entry is considered successful.
+     * @return mixed
      */
     public function delete($id)
     {
