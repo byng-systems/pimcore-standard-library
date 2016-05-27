@@ -28,7 +28,7 @@ class PimcoreCache implements CacheInterface {
      */
     public function contains($id)
     {
-        return ($this->fetch($id) ? true : false );
+        return (bool) $this->fetch($id);
     }
 
     /**
@@ -60,35 +60,5 @@ class PimcoreCache implements CacheInterface {
     public function delete($id)
     {
         return Cache::delete($id);
-    }
-
-    /**
-     * Retrieves cached information from the data store.
-     *
-     * The server's statistics array has the following values:
-     *
-     * - <b>hits</b>
-     * Number of keys that have been requested and found present.
-     *
-     * - <b>misses</b>
-     * Number of items that have been requested and not found.
-     *
-     * - <b>uptime</b>
-     * Time that the server is running.
-     *
-     * - <b>memory_usage</b>
-     * Memory used by this server to store items.
-     *
-     * - <b>memory_available</b>
-     * Memory allowed to use for storage.
-     *
-     * @since 2.2
-     *
-     * @return array|null An associative array with server's statistics if available, NULL otherwise.
-     */
-    public function getStats()
-    {
-        // TODO: Implement getStats() method.
-        return []; 
     }
 }
