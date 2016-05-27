@@ -28,7 +28,7 @@ class PimcoreCache implements CacheInterface {
      */
     public function contains($id)
     {
-        // TODO: Implement contains() method.
+        return ($this->fetch($id) ? true : false );
     }
 
     /**
@@ -59,7 +59,7 @@ class PimcoreCache implements CacheInterface {
      */
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        return Cache::delete($id);
     }
 
     /**
@@ -89,5 +89,6 @@ class PimcoreCache implements CacheInterface {
     public function getStats()
     {
         // TODO: Implement getStats() method.
+        return []; 
     }
 }
