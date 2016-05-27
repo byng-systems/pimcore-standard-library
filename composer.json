@@ -30,5 +30,8 @@
     },
     "autoload": {
         "psr-4": {"Byng\\Pimcore\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Byng\\Pimcore\\Tests\\": "tests/"}
     }
 }
